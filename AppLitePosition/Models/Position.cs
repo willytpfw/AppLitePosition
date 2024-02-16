@@ -29,7 +29,7 @@ namespace AppLitePosition.Data
             get
             {
                 string result = "";
-                result = Latitude.ToString() + " - " + Longitude.ToString();
+                result = Latitude.ToString() + " / " + Longitude.ToString();
                 return result;
 
             }

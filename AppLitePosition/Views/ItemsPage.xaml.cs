@@ -51,16 +51,16 @@ namespace AppLitePosition.Views
             try
             {
                 Location lLocation = new Location();
-                //var plocation = Geolocation.GetLastKnownLocationAsync();
+                var plocation = Geolocation.GetLastKnownLocationAsync();
 
 
                 Position objPosition = new Position();
 
-                var plocation = new Location(22.1593, 100.9639);
+                //var plocation = new Location(22.1593, 100.9639);
 
-                if (plocation != null)
+                if (plocation.Result != null)
                 {
-                    lLocation = plocation; //.Result;
+                    lLocation = plocation.Result;
 
                     //objPosition.Positiong = new GeographyPositiong();
 
@@ -92,11 +92,14 @@ namespace AppLitePosition.Views
         {
             Position objPosition = new Position();
 
-            var button = sender as Xamarin.Forms.Button;
-            var stackLayout = button.Parent as StackLayout;
-            stackLayout.Children.Remove(button);
-
-            var lID = ((Label)stackLayout.Children[1]).Text;
+            var button = sender as Xamarin.Forms.Button; // Button generate the event
+            var Grid = button.Parent as Grid; // the parent is the Grid
+            // Remove Childs
+            Grid.Children.Remove(button);
+            var lGPS = ((Label)Grid.Children[0]);
+            Grid.Children.Remove(lGPS);
+           
+            var lID = ((Label)Grid.Children[0]).Text;
             objPosition = objPositionDB.GetPosition(int.Parse(lID));
             objPositionDB.DeletePosition(objPosition);
 

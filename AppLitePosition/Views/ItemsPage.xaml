@@ -16,10 +16,20 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                            <Label Text="{Binding GPS}" VerticalTextAlignment="Center" FontSize="Medium" AnchorX="700"/>
-                            <Label Text="{Binding Id}" VerticalTextAlignment="Center" FontSize="Medium" IsVisible="FALSE" />
-                            <Button Text="X" BackgroundColor="Gray" HorizontalOptions="End" CommandParameter="{Binding .}" Clicked="OnButtonDeleteClicked"/>
+                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding GPS}" HorizontalOptions="Start"  FontSize="Medium" TextColor="Black"  VerticalOptions="Fill" />
+                                <Label Text="{Binding Id}" IsVisible="FALSE" />
+                                <Button Grid.Row="0" Grid.Column="2" Text="X" TextColor="White" BackgroundColor="Gray" HorizontalOptions="End" CommandParameter="{Binding .}" Clicked="OnButtonDeleteClicked"/>
+                           </Grid>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
